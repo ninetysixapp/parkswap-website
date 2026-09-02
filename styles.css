@@ -34,6 +34,7 @@ footer>div{gap:17px}footer>div a{display:inline-flex;align-items:center;min-heig
 }
 .site-header a{color:inherit}
 .hero{
+  position:relative;
   color:#fff;
   background:
     radial-gradient(circle at 77% 23%,rgba(255,203,28,.24),transparent 30%),
