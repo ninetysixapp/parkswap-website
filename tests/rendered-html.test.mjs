@@ -25,7 +25,7 @@ test("packages the public brand and real product assets", async () => {
     access(new URL("parkswap-logo.png", root)),
     access(new URL("assets/parkswap-map.png", root)),
     access(new URL("assets/parkswap-drive.png", root)),
-    access(new URL("assets/parkswap-tip.png", root)),
+    access(new URL("assets/parkswap-report.png", root)),
   ]);
 });
 
