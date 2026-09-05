@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ParkSwap combines Apple Maps driving directions with parking discovery near your destination, timely community reports, and live driver handoffs.">
+  <meta name="description" content="ParkSwap combines traffic-aware turn-by-turn navigation with street-parking discovery before arrival, community spot reports, live handoffs, and saved-car guidance.">
   <meta name="theme-color" content="#0b0c0f">
   <link rel="canonical" href="https://parkswap.com/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="ParkSwap — Navigate there. Find parking before you arrive.">
-  <meta property="og:description" content="Turn-by-turn driving with parking discovery built into the trip.">
+  <meta property="og:description" content="Traffic-aware driving, street-parking discovery, live community handoffs, and the final walk—one continuous trip.">
   <meta property="og:url" content="https://parkswap.com/">
   <meta property="og:image" content="https://parkswap.com/assets/app-store/1.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260902-map-first-release">
+  <link rel="stylesheet" href="styles.css?v=20260904-complete-trip">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,7 +26,7 @@
     "name": "ParkSwap",
     "operatingSystem": "iOS",
     "applicationCategory": "NavigationApplication",
-    "description": "Apple Maps driving directions with automatic nearby parking discovery, pedestrian spot reports, live driver handoffs, and walking guidance after parking.",
+    "description": "Traffic-aware turn-by-turn iPhone navigation with automatic street-parking discovery, pedestrian spot reports, live driver handoffs, and saved-car guidance.",
     "url": "https://parkswap.com/",
     "downloadUrl": "https://apps.apple.com/us/app/parkswap-swap-your-spot/id1494510599"
   }
@@ -50,9 +50,9 @@
   <main id="top">
     <section class="hero section-shell">
       <div class="hero-copy">
-        <div class="eyebrow"><span></span> Turn-by-turn driving + parking discovery</div>
-        <h1>Navigate there.<br><em>Find parking before you arrive.</em></h1>
-        <p class="hero-lead">Enter any U.S. destination, follow full-screen live driving directions, and let ParkSwap begin finding useful parking options as you approach—without starting a second search.</p>
+        <div class="eyebrow"><span></span> The complete destination-to-parking journey</div>
+        <h1>Drive there.<br><em>Park without starting over.</em></h1>
+        <p class="hero-lead">Search any U.S. destination, follow traffic-aware live guidance, and let ParkSwap surface timely street-parking signals before you arrive—then remember exactly where you parked.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="https://apps.apple.com/us/app/parkswap-swap-your-spot/id1494510599" target="_blank" rel="noopener">Download for iPhone <span>↗</span></a>
           <a class="button button-quiet" href="#how">See how it works <span>↓</span></a>
@@ -82,11 +82,28 @@
       <span>SEARCH YOUR DESTINATION</span><i></i><span>START LIVE NAVIGATION</span><i></i><span>PARKING APPEARS NEAR ARRIVAL</span>
     </section>
 
+    <section class="proof-section section-shell section-pad" id="navigation">
+      <div class="proof-phone-wrap">
+        <span class="proof-badge">ACTUAL PARKSWAP SCREEN</span>
+        <div class="proof-phone"><img src="assets/parkswap-map.png" alt="ParkSwap destination screen for the American Museum of Natural History"></div>
+      </div>
+      <div class="proof-copy">
+        <span class="kicker">Before the first turn</span>
+        <h2>Choose the destination. ParkSwap plans beyond the pin.</h2>
+        <p class="proof-intro">Confirm where you are going once. ParkSwap carries that destination through the drive, street-parking search, saved-car location, and final walk.</p>
+        <ol class="proof-list">
+          <li><b>1</b><span><strong>Confirm the destination</strong><small>American Museum of Natural History is where you are going. The map shows the destination and its surrounding parking area.</small></span></li>
+          <li><b>2</b><span><strong>Tap “Start drive”</strong><small>ParkSwap opens full-screen turn-by-turn navigation. The map follows the moving car, rotates with travel direction, and keeps the next maneuver prominent.</small></span></li>
+          <li><b>3</b><span><strong>Street-parking search starts automatically</strong><small>As you approach, live driver handoffs and timely community sightings appear without interrupting navigation.</small></span></li>
+          <li><b>4</b><span><strong>Park, save, and walk back</strong><small>Save the car’s precise location, set a meter reminder, and open walking directions back whenever needed.</small></span></li>
+        </ol>
+      </div>
+    </section>
     <section class="drive-section">
       <div class="drive-copy">
         <span class="kicker">Live navigation</span>
         <h2>A real driving view. Parking intelligence built in.</h2>
-        <p>After Start drive, ParkSwap switches to full-screen moving guidance. Your position stays centered, the map follows your heading, and the next turn remains unmistakable while parking prepares quietly in the background.</p>
+        <p>After Start drive, ParkSwap switches to full-screen moving guidance. Your position stays visible, the map follows your heading, traffic and route changes remain clear, and the next turn stays unmistakable while parking prepares quietly in the background.</p>
         <div class="drive-capabilities">
           <span><i>↗</i><b>Street-following route</b><small>Guidance follows driveable roads, never straight lines through blocks.</small></span>
           <span><i>◎</i><b>Moving car position</b><small>The map follows your live location and direction.</small></span>
@@ -95,10 +112,23 @@
         </div>
       </div>
       <div class="drive-visual">
-        <div class="drive-phone"><img src="assets/parkswap-drive.png" alt="ParkSwap live turn-by-turn driving guidance on Apple Maps"></div>
+        <div class="drive-phone"><img src="assets/parkswap-drive.png" alt="ParkSwap route guidance approaching the American Museum of Natural History"></div>
         <div class="drive-callout callout-turn"><b>NEXT TURN</b><span>Always visible</span></div>
         <div class="drive-callout callout-search"><b>PARKING SEARCH</b><span>Runs as you approach</span></div>
-        <p class="drive-caption"><strong>Actual app:</strong> live Apple Maps guidance with parking discovery ready near arrival.</p>
+        <p class="drive-caption"><strong>Shown:</strong> ParkSwap approach mode. Full-screen moving guidance opens when Start drive is pressed.</p>
+      </div>
+    </section>
+
+    <section class="difference-section section-shell section-pad" id="difference">
+      <div class="difference-heading">
+        <span class="kicker">Why ParkSwap</span>
+        <h2>Navigation should not end<br>when parking begins.</h2>
+        <p>Traditional navigation gets you to a pin. Parking marketplaces ask you to begin a separate search. ParkSwap keeps the entire arrival in one focused journey.</p>
+      </div>
+      <div class="difference-grid">
+        <article><span>01</span><h3>Drive with confidence</h3><p>Traffic-aware routing, spoken maneuvers, adaptive map framing, live ETA, and automatic rerouting keep the drive understandable.</p></article>
+        <article><span>02</span><h3>Discover curbside help</h3><p>Parking signals begin near arrival and prioritize timely community information instead of making you restart the trip.</p></article>
+        <article><span>03</span><h3>Complete the last block</h3><p>Save the parked car, set a meter reminder, and continue on foot with a clear record of where the vehicle is waiting.</p></article>
       </div>
     </section>
 
@@ -108,7 +138,7 @@
         <p>No mystery and no separate parking search. The app tells you what is happening, when parking discovery begins, and what to do next.</p>
       </div>
       <div class="steps">
-        <article class="step-card step-yellow">
+        <article class="step-card step-accent">
           <span class="step-number">01</span>
           <div class="step-icon">⌖</div>
           <h3>Choose where you’re going</h3>
@@ -124,7 +154,7 @@
           <span class="step-number">03</span>
           <div class="step-icon">✓</div>
           <h3>Let parking come to you</h3>
-          <p>Within roughly one mile, ParkSwap checks for live driver handoffs and fresh community sightings near the destination.</p>
+          <p>As you approach, ParkSwap checks live driver handoffs first, then timely community sightings and scheduled departures.</p>
         </article>
         <article class="step-card">
           <span class="step-number">04</span>
@@ -145,7 +175,7 @@
         <article><span>01</span><i>◎</i><h3>Spot a legal space</h3><p>Confirm it is public and not a hydrant, driveway, crosswalk, bus stop, loading zone, or restricted space.</p></article>
         <article><span>02</span><i>＋</i><h3>Share what you saw</h3><p>Open <strong>Share your spot</strong>, choose <strong>I spotted an open space</strong>, and confirm the location.</p></article>
         <article><span>03</span><i>15</i><h3>Nearby drivers see it</h3><p>The sighting stays live for 15 minutes so the information remains timely and useful.</p></article>
-        <article><span>04</span><i>✓</i><h3>Keep the network accurate</h3><p>Reports expire automatically, and drivers can cancel or delay a report if conditions change.</p></article>
+        <article><span>04</span><i>♡</i><h3>Receive a thank-you</h3><p>After a driver confirms parking, they can optionally send a secure thank-you payment.</p></article>
       </div>
       <div class="community-highlight">
         <div><b>Walking through the city?</b><span>Your observation can save someone time without reserving, selling, or claiming public space.</span></div>
@@ -159,7 +189,7 @@
         <p>These are real ParkSwap screens. Set the destination, start full-screen guidance, and use trusted parking help as you arrive.</p>
       </div>
       <div class="app-gallery">
-        <figure><img src="assets/parkswap-map.png" alt="ParkSwap destination search on Apple Maps"><figcaption><b>1 · Set the destination</b><span>Search any U.S. address or place and start from your live position</span></figcaption></figure>
+        <figure><img src="assets/parkswap-map.png" alt="ParkSwap destination setup at the American Museum of Natural History"><figcaption><b>1 · Set the destination</b><span>Search any U.S. address and review the arrival area</span></figcaption></figure>
         <figure><img src="assets/parkswap-drive.png" alt="ParkSwap live route guidance with parking search active"><figcaption><b>2 · Start the live drive</b><span>The route, moving position, next turn, and parking search work together</span></figcaption></figure>
         <figure><img src="assets/parkswap-report.png" alt="ParkSwap screen for reporting a nearby open parking space"><figcaption><b>3 · Help the next driver</b><span>Drivers and walkers can share what they see; reports expire automatically</span></figcaption></figure>
       </div>
@@ -181,8 +211,8 @@
     <section class="download-section section-shell" id="download">
       <div>
         <span class="kicker">Ready when the street is</span>
-        <h2>Drive. Park. Help someone.</h2>
-        <p>Download ParkSwap for iPhone and make parking part of the route—not a second search after you arrive.</p>
+        <h2>One trip. All the way parked.</h2>
+        <p>Download ParkSwap for iPhone and make street parking part of the route—not a second search after you arrive.</p>
       </div>
       <div class="store-actions">
         <a class="app-store-link" href="https://apps.apple.com/us/app/parkswap-swap-your-spot/id1494510599" target="_blank" rel="noopener" aria-label="Download ParkSwap on the App Store">
