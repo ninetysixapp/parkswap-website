@@ -1,0 +1,66 @@
+name: Deploy ParkSwap landing page to GoDaddy
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: parkswap-production-landing
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the approved landing page
+        uses: actions/checkout@v4
+
+      - name: Package the landing page only
+        shell: bash
+        run: |
+          tar -czf parkswap-landing.tgz \
+            index.html styles.css pages.css 404.html robots.txt sitemap.xml CNAME \
+            parkswap-logo.png parkswap-app-icon.png assets aboutUs privacy terms blog-detail
+
+      - name: Upload the landing-page package
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.PARKSWAP_HOST }}
+          username: ${{ secrets.PARKSWAP_SSH_USER }}
+          password: ${{ secrets.PARKSWAP_SSH_PASSWORD }}
+          source: parkswap-landing.tgz
+          target: /tmp
+          overwrite: true
+
+      - name: Validate and activate the landing page
+        uses: appleboy/ssh-action@v1
+        env:
+          SUDO_PASSWORD: ${{ secrets.PARKSWAP_SUDO_PASSWORD }}
+        with:
+          host: ${{ secrets.PARKSWAP_HOST }}
+          username: ${{ secrets.PARKSWAP_SSH_USER }}
+          password: ${{ secrets.PARKSWAP_SSH_PASSWORD }}
+          envs: SUDO_PASSWORD
+          script: |
+            set -eu
+            release_dir="$(mktemp -d /tmp/parkswap-landing-XXXXXX)"
+            tar -xzf /tmp/parkswap-landing.tgz -C "$release_dir"
+            test -s "$release_dir/index.html"
+            grep -Fq 'Navigate there.' "$release_dir/index.html"
+            grep -Fq 'https://apps.apple.com/us/app/parkswap-swap-your-spot/id1494510599' "$release_dir/index.html"
+            target=/var/www/html/backend-api
+            stamp="$(date +%Y%m%d%H%M%S)"
+            backup="/var/backups/parkswap-landing/$stamp"
+            printf '%s\n' "$SUDO_PASSWORD" | sudo -S mkdir -p "$target" "$backup"
+            for path in index.html styles.css pages.css 404.html robots.txt sitemap.xml CNAME parkswap-logo.png parkswap-app-icon.png assets aboutUs privacy terms blog-detail; do
+              if [ -e "$target/$path" ]; then
+                printf '%s\n' "$SUDO_PASSWORD" | sudo -S cp -a "$target/$path" "$backup/"
+              fi
+              printf '%s\n' "$SUDO_PASSWORD" | sudo -S rm -rf "$target/$path"
+              printf '%s\n' "$SUDO_PASSWORD" | sudo -S cp -a "$release_dir/$path" "$target/$path"
+            done
+            printf '%s\n' "$SUDO_PASSWORD" | sudo -S nginx -t
+            printf '%s\n' "$SUDO_PASSWORD" | sudo -S systemctl reload nginx
+            rm -rf "$release_dir" /tmp/parkswap-landing.tgz
+
