@@ -89,3 +89,20 @@ footer>div{gap:17px}footer>div a{display:inline-flex;align-items:center;min-heig
 @media(max-width:900px){.difference-heading{grid-template-columns:1fr}.difference-heading p{max-width:620px}.difference-grid{grid-template-columns:1fr}.difference-grid article{min-height:245px}.difference-grid article:nth-child(2){transform:none}}
 @media(max-width:700px){.difference-heading h2{font-size:42px;letter-spacing:-2.6px}.difference-grid article{padding:24px}}
 
+
+
+/* Five distinct moments: navigation leads, supporting flows stay visually balanced. */
+@media(min-width:1001px){
+  .app-gallery{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .app-gallery figure{grid-column:span 2}
+  .app-gallery figure:nth-child(4){grid-column:2/span 2}
+  .app-gallery figure:nth-child(5){grid-column:4/span 2}
+}
+@media(max-width:1000px) and (min-width:701px){
+  .app-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-gallery figure:first-child{grid-column:1/-1}
+  .app-gallery figure:first-child img{width:44%}
+}
+@media(max-width:700px){
+  .app-gallery figure{grid-column:auto}
+}
