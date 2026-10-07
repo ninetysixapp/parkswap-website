@@ -7,15 +7,16 @@ const root = new URL("../", import.meta.url);
 test("ships the complete ParkSwap landing page", async () => {
   const html = await readFile(new URL("index.html", root), "utf8");
 
-  assert.match(html, /<title>ParkSwap — Destination-First Parking Navigation for iPhone<\/title>/i);
-  assert.match(html, /Navigate there\.[\s\S]*Find parking before you arrive\./i);
+  assert.match(html, /<title>ParkSwap — NYC Parking, Better Together<\/title>/i);
+  assert.match(html, /Parking\.[\s\S]*Better together\./i);
   assert.match(html, /How it works/i);
-  assert.match(html, /full-screen moving guidance/i);
-  assert.match(html, /See an open spot\?[\s\S]*Help the next driver\./i);
-  assert.match(html, /Safety & trust/i);
-  assert.match(html, /apps\.apple\.com\/us\/app\/parkswap(?:-swap-your-spot)?\/id1494510599/i);
-  assert.match(html, /class="app-store-badge"/i);
-  assert.doesNotMatch(html, /Less circling|yellow background|Google Play|CarPlay|parking management services/i);
+  assert.match(html, /Driving directions/i);
+  assert.match(html, /Share your departure/i);
+  assert.match(html, /Trust matters/i);
+  assert.match(html, /https:\/\/apps\.apple\.com\/us\/app\/id1494510599/i);
+  assert.match(html, /https:\/\/app\.parkswap\.com\/app\//i);
+  assert.match(html, /\/nyc-parking\//i);
+  assert.doesNotMatch(html, /Google Play|CarPlay|guaranteed parking|parking management services/i);
 });
 
 test("packages the public brand and real product assets", async () => {
