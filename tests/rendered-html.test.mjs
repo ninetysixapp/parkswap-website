@@ -14,7 +14,7 @@ test("ships the complete ParkSwap landing page", async () => {
   assert.match(html, /Share your departure/i);
   assert.match(html, /Trust matters/i);
   assert.match(html, /https:\/\/apps\.apple\.com\/us\/app\/id1494510599/i);
-  assert.match(html, /https:\/\/app\.parkswap\.com\/app\//i);
+  assert.doesNotMatch(html, /Use the web app|app\.parkswap\.com/i);
   assert.match(html, /\/nyc-parking\//i);
   assert.doesNotMatch(html, /Google Play|CarPlay|guaranteed parking|parking management services/i);
 });

@@ -10,7 +10,7 @@ for (const page of ['index.html','nyc-parking/index.html']) {
     assert.match(html, /<meta name="description" content="[^"]+"/);
     assert.match(html, /<link rel="canonical" href="https:\/\/parkswap\.com\//);
     assert.match(html, /app-id=1494510599/);
-    assert.match(html, /https:\/\/app\.parkswap\.com\/app\//);
+    assert.doesNotMatch(html, /Use the web app|app\.parkswap\.com/i);
     const schema = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
     assert.ok(schema.length);
     for (const [,json] of schema) assert.equal(JSON.parse(json)['@context'],'https://schema.org');
