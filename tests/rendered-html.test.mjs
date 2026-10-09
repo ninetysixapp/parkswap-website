@@ -41,7 +41,7 @@ test("preserves ParkSwap's indexed public routes", async () => {
   for (const [file, canonical] of routes) {
     const html = await readFile(new URL(file, root), "utf8");
     assert.match(html, canonical);
-    assert.match(html, /parkswap-app-icon\.png/i);
+    assert.match(html, /parkswap-s-icon-v2\.png/i);
     assert.doesNotMatch(html, /CarPlay|Android Auto/i);
   }
 

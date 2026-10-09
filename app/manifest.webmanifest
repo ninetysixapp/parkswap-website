@@ -10,6 +10,6 @@
   "theme_color": "#090a0c",
   "categories": ["navigation", "travel", "utilities"],
   "icons": [
-    {"src": "../parkswap-app-icon.png", "sizes": "400x400", "type": "image/png", "purpose": "any maskable"}
+    {"src": "../parkswap-s-icon-v2.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
   ]
 }
