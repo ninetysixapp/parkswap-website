@@ -32,10 +32,10 @@ test("packages the public brand and real product assets", async () => {
 
 test("preserves ParkSwap's indexed public routes", async () => {
   const routes = [
-    ["aboutUs/index.html", /https:\/\/parkswap\.com\/aboutUs/i],
-    ["privacy/index.html", /https:\/\/parkswap\.com\/privacy/i],
-    ["terms/index.html", /https:\/\/parkswap\.com\/terms/i],
-    ["blog-detail/index.html", /https:\/\/parkswap\.com\/blog-detail\?blog=1/i],
+    ["aboutUs/index.html", /https:\/\/parkswap\.com\/aboutUs\//i],
+    ["privacy/index.html", /https:\/\/parkswap\.com\/privacy\//i],
+    ["terms/index.html", /https:\/\/parkswap\.com\/terms\//i],
+    ["blog-detail/index.html", /https:\/\/parkswap\.com\/blog-detail\//i],
   ];
 
   for (const [file, canonical] of routes) {
@@ -51,6 +51,29 @@ test("preserves ParkSwap's indexed public routes", async () => {
     access(new URL("sitemap.xml", root)),
     access(new URL("pages.css", root)),
   ]);
+});
+
+test("publishes a useful NYC parking article on one clean canonical URL", async () => {
+  const html = await readFile(new URL("blog-detail/index.html", root), "utf8");
+  const sitemap = await readFile(new URL("sitemap.xml", root), "utf8");
+  const canonical = "https://parkswap.com/blog-detail/";
+
+  assert.match(html, /<title>How to Share a Parking Departure Safely in NYC \| ParkSwap<\/title>/);
+  assert.equal((html.match(/<h1[\s>]/g) || []).length, 1);
+  assert.match(html, /<link rel="canonical" href="https:\/\/parkswap\.com\/blog-detail\/">/);
+  assert.match(html, /datePublished":"2026-10-09"/);
+  assert.match(html, /dateModified":"2026-10-09"/);
+  assert.match(html, /https:\/\/portal\.311\.nyc\.gov\/article\//);
+  assert.match(html, /parking is never guaranteed/i);
+  assert.doesNotMatch(html, /blog=1|fully-automated parking/i);
+  assert.match(sitemap, new RegExp(`<loc>${canonical.replaceAll("/", "\\/")}</loc>`));
+  assert.doesNotMatch(sitemap, /\?blog=|blog\/</i);
+
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  assert.equal(schemas.length, 1);
+  const graph = JSON.parse(schemas[0][1])["@graph"];
+  assert.ok(graph.some((node) => node["@type"] === "Article" && node.mainEntityOfPage["@id"] === canonical));
+  assert.ok(graph.some((node) => node["@type"] === "BreadcrumbList"));
 });
 
 test("keeps mobile navigation targets accessible", async () => {
