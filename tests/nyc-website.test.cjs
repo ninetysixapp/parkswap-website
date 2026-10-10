@@ -33,3 +33,13 @@ test('sitemap advertises the guide and Google verification is preserved',()=>{
   assert.ok(fs.existsSync(path.join(root,'google1e397fb5860504dc.html')));
   assert.equal(fs.readFileSync(path.join(root,'CNAME'),'utf8').trim(),'parkswap.com');
 });
+test('sign-scan preview uses a real capture and describes reminder limits',()=>{
+  const html = fs.readFileSync(path.join(root,'index.html'),'utf8');
+  assert.match(html,/parkswap-sign-scan-preview-v48\.jpg/);
+  assert.match(html,/Next update preview · not yet released/);
+  assert.match(html,/15 or 30 minutes before/);
+  assert.match(html,/next 28 days/);
+  assert.match(html,/confirm/i);
+  assert.match(html,/aren't saved or uploaded/);
+  assert.doesNotMatch(html,/guaranteed ticket protection|automatically certifies/i);
+});
