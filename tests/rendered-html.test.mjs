@@ -7,7 +7,7 @@ const root = new URL("../", import.meta.url);
 test("ships the complete ParkSwap landing page", async () => {
   const html = await readFile(new URL("index.html", root), "utf8");
 
-  assert.match(html, /<title>ParkSwap — NYC Parking, Better Together<\/title>/i);
+  assert.match(html, /<title>ParkSwap — NYC Parking App &amp; Street Cleaning Guide<\/title>|<title>ParkSwap — NYC Parking App & Street Cleaning Guide<\/title>/i);
   assert.match(html, /Parking\.[\s\S]*Better together\./i);
   assert.match(html, /How it works/i);
   assert.match(html, /Driving directions/i);

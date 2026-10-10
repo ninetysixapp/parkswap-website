@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://parkswap.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://parkswap.com/</loc><lastmod>2026-10-10</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://parkswap.com/nyc-parking/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://parkswap.com/aboutUs/</loc></url>
   <url><loc>https://parkswap.com/privacy/</loc></url>
   <url><loc>https://parkswap.com/terms/</loc></url>
   <url><loc>https://parkswap.com/blog-detail/</loc><lastmod>2026-10-09</lastmod></url>
+  <url><loc>https://parkswap.com/support/</loc><lastmod>2026-10-10</lastmod></url>
 </urlset>
