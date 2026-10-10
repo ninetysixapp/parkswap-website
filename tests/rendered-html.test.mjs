@@ -30,6 +30,20 @@ test("packages the public brand and real product assets", async () => {
   ]);
 });
 
+test("labels unreleased screenshots honestly and uses approved share branding", async () => {
+  const html = await readFile(new URL("index.html", root), "utf8");
+  assert.match(html, /Next update preview · not yet released/);
+  assert.match(html, /parkswap-map-preview-v3\.jpg/);
+  assert.doesNotMatch(html, /Current ParkSwap app preview/);
+  for (const page of ["index.html", "aboutUs/index.html", "privacy/index.html", "terms/index.html", "blog-detail/index.html", "nyc-parking/index.html"]) {
+    const content = await readFile(new URL(page, root), "utf8");
+    assert.match(content, /property="og:image" content="https:\/\/parkswap.com\/assets\/parkswap-share-approved-v3.png"/);
+    assert.match(content, /name="twitter:image" content="https:\/\/parkswap.com\/assets\/parkswap-share-approved-v3.png"/);
+  }
+  await access(new URL("assets/parkswap-map-preview-v3.jpg", root));
+  await access(new URL("assets/parkswap-share-approved-v3.png", root));
+});
+
 test("preserves ParkSwap's indexed public routes", async () => {
   const routes = [
     ["aboutUs/index.html", /https:\/\/parkswap\.com\/aboutUs\//i],
